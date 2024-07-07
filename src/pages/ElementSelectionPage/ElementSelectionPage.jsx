@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Howl } from "howler";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -7,11 +7,15 @@ import "./ElementSelectionPage.scss";
 
 const ElementSelectionPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [activeBackground, setActiveBackground] = useState("");
   const [sound, setSound] = useState(null);
   const [selectedElements, setSelectedElements] = useState(new Array(4).fill({ selected: false, volume: 50, intensity: 50 }));
 
-  const rainyData = ["Thunder", "Windchime", "Bamboo-Fountain", "Traffic"];
+  const { environment } = location.state || {};
+  const elements = environment ? environment.elements : [];
+
+  //const rainyData = ["Thunder", "Windchime", "Bamboo-Fountain", "Traffic"];
 
   const handleMouseEnter = (element) => {
     setActiveBackground(element);
@@ -66,10 +70,10 @@ const ElementSelectionPage = () => {
       )}
       <main className="selection-content">
         <h1 className={activeBackground ? `selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>
-          Do you want to hear this at a Rainy Day?
+          Do you want to hear this {environment.envPhase}?
         </h1>
         <div className="selection-content__element-buttons">
-          {rainyData.map((ele, index) => (
+          {elements.map((ele, index) => (
             <div key={ele} className={ele} onMouseEnter={() => handleMouseEnter(ele)} onMouseLeave={handleMouseLeave}>
               <button className={`selection-content__element-buttons--button ${selectedElements[index].selected ? "selected" : ""}`} onClick={() => toggleElementSelection(index)}>
                 {ele.replace("-", " ")}

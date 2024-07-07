@@ -10,6 +10,7 @@ const FirstSelectionPage = () => {
   const navigate = useNavigate();
   const [activeBackground, setActiveBackground] = useState("");
   const [sound, setSound] = useState(null);
+  const [selectedEnv, setSelectedEnv] = useState({});
 
   const handleMouseEnter = (environment) => {
     setActiveBackground(environment);
@@ -34,8 +35,8 @@ const FirstSelectionPage = () => {
     }
   };
 
-  const handleClick = () => {
-    navigate("/customize-sounds");
+  const handleClick = (environment) => {
+    navigate("/customize-sounds", { state: { environment } });
   };
 
   useEffect(() => {
@@ -55,14 +56,14 @@ const FirstSelectionPage = () => {
         </video>
       )}
       <main className="selection-content">
-        <h1 className={activeBackground ? `selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>Where Would You Like to be?</h1>
+        <h1 className={activeBackground ? `selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>Where Would You Like To Be?</h1>
         <div className="selection-content__environment-buttons">
           {EnvironmentData.map((env) => (
             <button
               key={env.name}
               onMouseEnter={() => handleMouseEnter(env.name)}
               onMouseLeave={handleMouseLeave}
-              onClick={handleClick}
+              onClick={() => handleClick(env)}
               className="selection-content__environment-buttons--button">
               {env.displayName}
             </button>
