@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Howl } from "howler";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import EnvironmentData from "../../data/environments.json";
 import "./FirstSelectionPage.scss";
 
 const FirstSelectionPage = () => {
@@ -56,14 +57,14 @@ const FirstSelectionPage = () => {
       <main className="selection-content">
         <h1 className={activeBackground ? `selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>Where Would You Like to be?</h1>
         <div className="selection-content__environment-buttons">
-          {["Rainy-Outdoors", "Beachside-Waves", "Forest-Retreat", "Cozy-Lounge"].map((env) => (
+          {EnvironmentData.map((env) => (
             <button
-              key={env}
-              onMouseEnter={() => handleMouseEnter(env)}
+              key={env.name}
+              onMouseEnter={() => handleMouseEnter(env.name)}
               onMouseLeave={handleMouseLeave}
               onClick={handleClick}
               className="selection-content__environment-buttons--button">
-              {env.replace("-", " ")}
+              {env.displayName}
             </button>
           ))}
         </div>
