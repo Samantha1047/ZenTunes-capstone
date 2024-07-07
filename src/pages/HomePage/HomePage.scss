@@ -1,0 +1,59 @@
+@use "../../styles/partials/variables" as *;
+
+.home {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  color: $primay-dark;
+  background-color: $off-white;
+
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+
+    h1 {
+      margin: 0.5rem;
+      color: $primay-dark;
+    }
+
+    p {
+      margin: 0.5rem;
+      font-size: 1rem;
+    }
+  }
+
+  &__message {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    visibility: hidden;
+    font-size: 1.2rem;
+
+    &--show {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__start-button {
+    margin: 3rem;
+    background-color: $greyish-orange;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $primay-dark;
+    transition: transform 0.3s, border 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+      border: 1px solid $primay-dark;
+    }
+  }
+}

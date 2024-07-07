@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Rainy-Outdoors",
+    "displayName": "Rainy Outdoors",
+    "elements": ["Thunder", "Windchime", "Bamboo-Fountain", "Traffic"]
+  },
+  {
+    "name": "Beachside-Waves",
+    "displayName": "Beachside Waves",
+    "elements": ["Seagull", "Bonfire", "Boat", "Human-Activity"]
+  },
+  {
+    "name": "Among-Trees",
+    "displayName": "Among Trees",
+    "elements": ["Birds", "Bugs", "Deer", "Creeks"]
+  },
+  {
+    "name": "Cozy-Lounge",
+    "displayName": "Cozy Lounge",
+    "elements": ["Fireplace-Crackle", "Pages-Turning", "Cup-Clink", "Clock-Ticking"]
+  }
+]

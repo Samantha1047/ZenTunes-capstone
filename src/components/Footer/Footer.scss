@@ -1,0 +1,9 @@
+@use "../../styles/partials/variables" as *;
+
+.footer {
+  background-color: $header-background;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: $primay-dark;
+}

@@ -1,0 +1,44 @@
+@use "../../styles/partials/variables" as *;
+
+.result-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  color: #50514f;
+
+  .result-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .audio-player {
+      margin-bottom: 20px;
+      width: 80%; // Adjust based on your design preference
+    }
+
+    .try-again-button {
+      margin: 3rem;
+      background-color: $greyish-orange;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: $primay-dark;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+        border: 1px solid $primay-dark;
+      }
+    }
+  }
+}

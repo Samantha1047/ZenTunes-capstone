@@ -1,0 +1,14 @@
+@use "../../styles/partials/variables" as *;
+
+.header {
+  background-color: $header-background;
+  padding: 1rem;
+  text-align: center;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 75% 100%, 25% 100%, 0 85%);
+
+  &__logo {
+    img {
+      height: 6rem;
+    }
+  }
+}

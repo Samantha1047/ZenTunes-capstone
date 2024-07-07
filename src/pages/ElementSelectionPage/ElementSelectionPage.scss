@@ -1,0 +1,104 @@
+@use "../../styles/partials/variables" as *;
+.element-selection {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  color: #50514f;
+  //background-color: #fffcff;
+  background-color: transparent;
+  transition: background 0.5s ease;
+
+  &__background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background-size: cover;
+  }
+
+  .selection-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    &__background-active {
+      &--Thunder {
+        color: $header-background;
+      }
+      &--Windchime {
+        color: $header-background;
+      }
+      &--Bamboo-Fountain {
+        color: $header-background;
+      }
+      &--Traffic {
+        color: $off-white;
+      }
+    }
+
+    &__element-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4rem;
+
+      &--button {
+        padding: 10px 20px;
+        width: 11rem;
+        font-size: 1rem;
+        color: #fffcff;
+        background-color: #247ba0;
+        border: none;
+        border-radius: 8px;
+        transition: background-color 0.3s, transform 0.3s;
+
+        &:hover {
+          background-color: #1a5a78;
+          transform: scale(1.1);
+        }
+
+        &.selected {
+          background-color: $greyish-orange;
+        }
+      }
+    }
+
+    &__controls {
+      padding: 1rem 0;
+      p {
+        color: $off-white;
+      }
+    }
+  }
+
+  &__submit {
+    position: absolute;
+    bottom: 0;
+    margin: 3rem;
+    background-color: $greyish-orange;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $primay-dark;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+      border: 1px solid $primay-dark;
+    }
+  }
+}
