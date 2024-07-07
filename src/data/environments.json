@@ -2,21 +2,25 @@
   {
     "name": "Rainy-Outdoors",
     "displayName": "Rainy Outdoors",
+    "envPhase": "at a Rainy Day",
     "elements": ["Thunder", "Windchime", "Bamboo-Fountain", "Traffic"]
   },
   {
     "name": "Beachside-Waves",
     "displayName": "Beachside Waves",
+    "envPhase": "at a Beachside",
     "elements": ["Seagull", "Bonfire", "Boat", "Human-Activity"]
   },
   {
     "name": "Among-Trees",
     "displayName": "Among Trees",
+    "envPhase": "among Trees",
     "elements": ["Birds", "Bugs", "Deer", "Creeks"]
   },
   {
     "name": "Cozy-Lounge",
     "displayName": "Cozy Lounge",
+    "envPhase": "at a Cozy Lounge",
     "elements": ["Fireplace-Crackle", "Pages-Turning", "Cup-Clink", "Clock-Ticking"]
   }
 ]
