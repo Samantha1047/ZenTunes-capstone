@@ -22,7 +22,7 @@ const FirstSelectionPage = () => {
     const newSound = new Howl({
       src: [`/assets/sound/${environment}.mp3`],
       loop: true,
-      volume: 0.8,
+      volume: 0.6,
     });
     newSound.play();
     setSound(newSound);

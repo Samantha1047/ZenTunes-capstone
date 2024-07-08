@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Howl } from "howler";
+import { Howl, Howler } from "howler";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./ElementSelectionPage.scss";
@@ -11,25 +11,39 @@ const ElementSelectionPage = () => {
   const [activeBackground, setActiveBackground] = useState("");
   const [sound, setSound] = useState(null);
   const [selectedElements, setSelectedElements] = useState(new Array(4).fill({ selected: false, volume: 50, intensity: 50 }));
+  const [audioContextStarted, setAudioContextStarted] = useState(false);
 
   const { environment } = location.state || {};
   const elements = environment ? environment.elements : [];
 
-  //const rainyData = ["Thunder", "Windchime", "Bamboo-Fountain", "Traffic"];
+  useEffect(() => {
+    if (!audioContextStarted) {
+      const startAudioContext = () => {
+        Howler.ctx.resume().then(() => {
+          setAudioContextStarted(true);
+        });
+        document.removeEventListener("click", startAudioContext);
+      };
+      document.addEventListener("click", startAudioContext);
+    }
+  }, [audioContextStarted]);
 
   const handleMouseEnter = (element) => {
     setActiveBackground(element);
-
     if (sound) {
       sound.unload();
     }
 
     const newSound = new Howl({
-      src: [`/assets/sound/${element}.mp3`],
+      src: [`/assets/sound/${element}/${element}_1.mp3`],
       loop: true,
-      volume: 1,
+      volume: selectedElements.find((el) => el.selected && el.name === element)?.volume / 100 || 0.8,
     });
-    newSound.play();
+
+    if (audioContextStarted) {
+      newSound.play();
+    }
+
     setSound(newSound);
   };
 
@@ -45,11 +59,16 @@ const ElementSelectionPage = () => {
   };
 
   const handleSliderChange = (index, type, value) => {
-    setSelectedElements(selectedElements.map((item, idx) => (idx === index ? { ...item, [type]: parseInt(value) } : item)));
+    const updatedElements = selectedElements.map((item, idx) => (idx === index ? { ...item, [type]: parseInt(value) } : item));
+    setSelectedElements(updatedElements);
+
+    if (type === "volume" && sound) {
+      sound.volume(value / 100);
+    }
   };
 
   const handleResult = () => {
-    navigate("/results");
+    navigate("/results", { state: { selectedElements } });
   };
 
   useEffect(() => {
@@ -82,7 +101,7 @@ const ElementSelectionPage = () => {
                 <div className="selection-content__controls">
                   <p>Volume:</p>
                   <input type="range" min="0" max="100" value={selectedElements[index].volume} onChange={(e) => handleSliderChange(index, "volume", e.target.value)} />
-                  <p>Intensity:</p>
+                  <p>Frequency:</p>
                   <input type="range" min="0" max="100" value={selectedElements[index].intensity} onChange={(e) => handleSliderChange(index, "intensity", e.target.value)} />
                 </div>
               )}
