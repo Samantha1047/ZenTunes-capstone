@@ -8,17 +8,31 @@ import "./ElementSelectionPage.scss";
 const ElementSelectionPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [activeBackground, setActiveBackground] = useState("");
-  const [sound, setSound] = useState(null);
-  const [selectedElements, setSelectedElements] = useState(new Array(4).fill({ selected: false, volume: 50, frequency: 50 }));
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [volume, setVolume] = useState(1);
-  const amb = useRef(null);
 
   const { environment } = location.state || {};
   const elements = environment ? environment.elements.map((element) => element.name) : [];
-  console.log(environment.envWord);
   const baseAmb = `/assets/sound/${environment.name}.mp3`;
+
+  const initialElements = elements.map((name) => ({
+    name,
+    selected: false,
+    volume: 50,
+    frequency: 50,
+  }));
+
+  const [activeBackground, setActiveBackground] = useState("");
+  const [sound, setSound] = useState(null);
+  const [selectedElements, setSelectedElements] = useState(initialElements);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [volume, setVolume] = useState(0.5);
+  const amb = useRef(null);
+  const topLayerSounds = useRef(null);
+
+  //get all the src url for all the elements, in object with key as element name
+  const topElements = {};
+  environment.elements.forEach((element) => {
+    topElements[element.name] = Array.from({ length: element.file_num }, (_, index) => `/assets/sound/${element.name}/${element.name}_${index + 1}.mp3`);
+  });
 
   useEffect(() => {
     amb.current = new Howl({
@@ -43,32 +57,28 @@ const ElementSelectionPage = () => {
 
   const handleMouseEnter = (element) => {
     setActiveBackground(element);
-    if (sound) {
-      sound.unload();
-    }
-
-    const newSound = new Howl({
-      src: [`/assets/sound/${element}/${element}_1.mp3`],
-      loop: true,
-      volume: selectedElements.find((el) => el.selected && el.name === element)?.volume / 100 || 0.8,
-    });
-
-    if (audioContextStarted) {
-      newSound.play();
-    }
-
-    setSound(newSound);
   };
 
   const handleMouseLeave = () => {
     setActiveBackground("");
-    if (sound) {
-      sound.stop();
-    }
   };
 
-  const toggleElementSelection = (index) => {
+  const toggleElementSelection = (index, element) => {
+    const isSelected = selectedElements[index].selected;
+
     setSelectedElements(selectedElements.map((item, idx) => (idx === index ? { ...item, selected: !item.selected } : item)));
+
+    if (!isSelected) {
+      topLayerSounds.current = topElements[element].map((src) => new Howl({ src: [src], volume: 0.5 }));
+
+      const randomIndex = Math.floor(Math.random() * topLayerSounds.current.length);
+      const sound = topLayerSounds.current[randomIndex];
+      sound.play();
+      setSound(sound);
+    } else {
+      sound.stop();
+      setSound(null);
+    }
   };
 
   const handleSliderChange = (index, type, value) => {
@@ -84,16 +94,8 @@ const ElementSelectionPage = () => {
     navigate("/results", { state: { environment, selectedElements } });
   };
 
-  useEffect(() => {
-    return () => {
-      if (sound) {
-        sound.unload();
-      }
-    };
-  }, [sound]);
-
   return (
-    <div className="element-selection">
+    <div className={`element-selection element-selection--${environment.name}`}>
       <Header />
       <video autoPlay loop muted playsInline className="element-selection__background-video">
         <source src={`/assets/videos/${environment.name}.mp4`} type="video/mp4" />
@@ -115,7 +117,9 @@ const ElementSelectionPage = () => {
         <div className="selection-content__element-buttons">
           {elements.map((ele, index) => (
             <div key={ele} className={ele} onMouseEnter={() => handleMouseEnter(ele)} onMouseLeave={handleMouseLeave}>
-              <button className={`selection-content__element-buttons--button ${selectedElements[index].selected ? "selected" : ""}`} onClick={() => toggleElementSelection(index)}>
+              <button
+                className={`selection-content__element-buttons--button ${selectedElements[index].selected ? "selected" : ""}`}
+                onClick={() => toggleElementSelection(index, ele)}>
                 {ele.replace("-", " ")}
               </button>
               {selectedElements[index].selected && (
