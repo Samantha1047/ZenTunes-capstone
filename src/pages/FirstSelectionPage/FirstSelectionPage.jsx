@@ -10,7 +10,6 @@ const FirstSelectionPage = () => {
   const navigate = useNavigate();
   const [activeBackground, setActiveBackground] = useState("");
   const [sound, setSound] = useState(null);
-  const [selectedEnv, setSelectedEnv] = useState({});
 
   const handleMouseEnter = (environment) => {
     setActiveBackground(environment);

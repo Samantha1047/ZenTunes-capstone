@@ -4,8 +4,6 @@
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  color: #50514f;
-  //background-color: #fffcff;
   background-color: transparent;
   transition: background 0.5s ease;
 
@@ -28,9 +26,10 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    color: $header-background;
 
-    h1 {
-      margin-bottom: 1rem;
+    &__instruction {
+      padding: 1rem 0 1rem 0;
     }
 
     &__background-active {
@@ -58,8 +57,8 @@
         padding: 10px 20px;
         width: 11rem;
         font-size: 1rem;
-        color: #fffcff;
-        background-color: #247ba0;
+        color: $off-white;
+        background-color: $button-blue;
         border: none;
         border-radius: 8px;
         transition: background-color 0.3s, transform 0.3s;
@@ -83,16 +82,36 @@
     }
   }
 
-  &__submit {
+  &__pause {
+    color: $off-white;
+    background-color: transparent;
+    padding: 10px 20px;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 2.5rem;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__try-again {
     position: absolute;
     bottom: 0;
-    margin: 3rem;
+    margin: 1rem;
     background-color: $greyish-orange;
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1rem;
     color: $primay-dark;
     transition: transform 0.3s;
 
