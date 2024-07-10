@@ -44,7 +44,13 @@ const ElementSelectionPage = () => {
     });
 
     return () => {
-      amb.current.stop();
+      elements.forEach((_, index) => {
+        if (topLayerSounds.current[index]) {
+          topLayerSounds.current[index].forEach((sound) => sound.stop());
+          clearTimeout(topLayerInterval.current[index]);
+        }
+      });
+      if (amb.current) amb.current.stop();
     };
   }, []);
 
@@ -94,6 +100,10 @@ const ElementSelectionPage = () => {
   };
 
   const playRandomTopLayer = (index) => {
+    if (!topLayerSounds.current[index] || topLayerSounds.current[index].length === 0) {
+      console.error("Sound files are not loaded or initialized properly");
+      return;
+    }
     const sounds = topLayerSounds.current[index];
     const randomIndex = Math.floor(Math.random() * sounds.length);
     const sound = sounds[randomIndex];
