@@ -19,7 +19,7 @@ const FirstSelectionPage = () => {
     }
 
     const newSound = new Howl({
-      src: [`/assets/sound/${environment}.mp3`],
+      src: [`/assets/sound/${environment}.wav`],
       loop: true,
       volume: 0.6,
     });

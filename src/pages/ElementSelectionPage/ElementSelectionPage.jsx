@@ -11,7 +11,7 @@ const ElementSelectionPage = () => {
 
   const { environment } = location.state || {};
   const elements = environment ? environment.elements.map((element) => element.name) : [];
-  const baseAmb = `/assets/sound/${environment.name}.mp3`;
+  const baseAmb = `/assets/sound/${environment.name}.wav`;
 
   const initialElements = elements.map((name) => ({
     name,
@@ -21,12 +21,12 @@ const ElementSelectionPage = () => {
   }));
 
   const [activeBackground, setActiveBackground] = useState("");
-  const [sound, setSound] = useState(null);
   const [selectedElements, setSelectedElements] = useState(initialElements);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isAmbPlaying, setIsAmbPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const amb = useRef(null);
-  const topLayerSounds = useRef(null);
+  const topLayerSounds = useRef([]);
+  const topLayerInterval = useRef([]);
 
   //get all the src url for all the elements, in object with key as element name
   const topElements = {};
@@ -37,6 +37,8 @@ const ElementSelectionPage = () => {
   useEffect(() => {
     amb.current = new Howl({
       src: [baseAmb],
+      //autoplay: true,
+      preload: true,
       loop: true,
       volume: volume,
     });
@@ -47,12 +49,12 @@ const ElementSelectionPage = () => {
   }, []);
 
   const playPauseHandler = () => {
-    if (isPlaying) {
+    if (isAmbPlaying) {
       amb.current.pause();
     } else {
       amb.current.play();
     }
-    setIsPlaying(!isPlaying);
+    setIsAmbPlaying(!isAmbPlaying);
   };
 
   const handleMouseEnter = (element) => {
@@ -65,33 +67,74 @@ const ElementSelectionPage = () => {
 
   const toggleElementSelection = (index, element) => {
     const isSelected = selectedElements[index].selected;
-
     setSelectedElements(selectedElements.map((item, idx) => (idx === index ? { ...item, selected: !item.selected } : item)));
 
     if (!isSelected) {
-      topLayerSounds.current = topElements[element].map((src) => new Howl({ src: [src], volume: 0.5 }));
-
-      const randomIndex = Math.floor(Math.random() * topLayerSounds.current.length);
-      const sound = topLayerSounds.current[randomIndex];
-      sound.play();
-      setSound(sound);
+      scheduleTopLayerSounds(index);
     } else {
-      sound.stop();
-      setSound(null);
+      if (topLayerSounds.current[index]) {
+        topLayerSounds.current[index].forEach((sound) => sound.stop());
+        clearTimeout(topLayerInterval.current[index]);
+        topLayerSounds.current[index] = null;
+      }
     }
+  };
+
+  const scheduleTopLayerSounds = (index) => {
+    const elementName = elements[index];
+    topLayerSounds.current[index] = topElements[elementName].map(
+      (src) =>
+        new Howl({
+          src: [src],
+          volume: selectedElements[index].volume / 100,
+        })
+    );
+
+    playRandomTopLayer(index);
+  };
+
+  const playRandomTopLayer = (index) => {
+    const sounds = topLayerSounds.current[index];
+    const randomIndex = Math.floor(Math.random() * sounds.length);
+    const sound = sounds[randomIndex];
+
+    sound.play();
+
+    // Schedule the next sound to play after current ends
+    sound.once("end", () => {
+      if (selectedElements[index].selected) {
+        const interval = convertSliderValue(selectedElements[index].frequency);
+        topLayerInterval.current[index] = setTimeout(() => playRandomTopLayer(index), interval);
+      }
+    });
+  };
+
+  const convertSliderValue = (value) => {
+    const maxInterval = 5 * 60 * 1000; // 5 minutes
+    const minInterval = 5 * 1000; // 5 sec
+    return (maxInterval - minInterval) * (1 - value / 100) + minInterval;
   };
 
   const handleSliderChange = (index, type, value) => {
     const updatedElements = selectedElements.map((item, idx) => (idx === index ? { ...item, [type]: parseInt(value) } : item));
     setSelectedElements(updatedElements);
 
-    if (type === "volume" && sound) {
-      sound.volume(value / 100);
+    if (type === "volume" && topLayerSounds.current[index]) {
+      topLayerSounds.current[index].forEach((sound) => {
+        sound.volume(value / 100);
+      });
+    }
+
+    if (type === "frequency") {
+      // Resetting the interval whenever the frequency changes
+      clearTimeout(topLayerInterval.current[index]);
+      const interval = convertSliderValue(value);
+      topLayerInterval.current[index] = setTimeout(() => playRandomTopLayer(index), interval);
     }
   };
 
   const handleResult = () => {
-    navigate("/results", { state: { environment, selectedElements } });
+    navigate("/");
   };
 
   return (
