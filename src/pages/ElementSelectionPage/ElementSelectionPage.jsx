@@ -143,6 +143,11 @@ const ElementSelectionPage = () => {
     }
   };
 
+  const volumeChangeHandler = (e) => {
+    setVolume(e.target.value);
+    amb.current.volume(e.target.value);
+  };
+
   const handleResult = () => {
     navigate("/");
   };
@@ -163,10 +168,13 @@ const ElementSelectionPage = () => {
           Do you want to hear this {environment.envPhase}?
         </h1>
         <p className="selection-content__instruction">Click to Select and Start Mixing!</p>
-        <button className="element-selection__pause" onClick={playPauseHandler}>
-          <img src="/assets/images/play_pause.svg" />
-          {environment.envWord}
-        </button>
+        <div className="selection-content__amb-controls">
+          <button className="element-selection__pause" onClick={playPauseHandler}>
+            <img src="/assets/images/play_pause.svg" />
+            {environment.envWord}
+          </button>
+          {isAmbPlaying && <input type="range" min="0" max="1" step="0.01" value={volume} onChange={volumeChangeHandler} className="element-selection__volume-slider" />}
+        </div>
         <div className="selection-content__element-buttons">
           {elements.map((ele, index) => (
             <div key={ele} className={ele} onMouseEnter={() => handleMouseEnter(ele)} onMouseLeave={handleMouseLeave}>
