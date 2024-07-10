@@ -1,4 +1,3 @@
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -7,7 +6,9 @@ import "./ResultsPage.scss";
 const ResultPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { selectedElements } = location.state || { selectedElements: [] };
+  const { environment, selectedElements } = location.state || {};
+  console.log(environment);
+  console.log(selectedElements);
 
   const handleTryAgain = () => {
     navigate("/");

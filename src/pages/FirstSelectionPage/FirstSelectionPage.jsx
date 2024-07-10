@@ -10,7 +10,6 @@ const FirstSelectionPage = () => {
   const navigate = useNavigate();
   const [activeBackground, setActiveBackground] = useState("");
   const [sound, setSound] = useState(null);
-  const [selectedEnv, setSelectedEnv] = useState({});
 
   const handleMouseEnter = (environment) => {
     setActiveBackground(environment);
@@ -20,9 +19,9 @@ const FirstSelectionPage = () => {
     }
 
     const newSound = new Howl({
-      src: [`/assets/sound/${environment}.mp3`],
+      src: [`/assets/sound/${environment}.wav`],
       loop: true,
-      volume: 0.8,
+      volume: 0.6,
     });
     newSound.play();
     setSound(newSound);
