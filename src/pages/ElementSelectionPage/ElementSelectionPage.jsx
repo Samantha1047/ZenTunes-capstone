@@ -5,6 +5,8 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import VolumeSlider from "../../components/VolumeSlider/VolumeSlider";
 import ElementSlider from "../../components/ElementSlider/ElementSlider";
+import PlayCircleFilledOutlinedIcon from "@mui/icons-material/PlayCircleFilledOutlined";
+import PauseCircleFilledOutlinedIcon from "@mui/icons-material/PauseCircleFilledOutlined";
 import "./ElementSelectionPage.scss";
 
 const ElementSelectionPage = () => {
@@ -188,7 +190,7 @@ const ElementSelectionPage = () => {
         <p className="selection-content__instruction">Click to Select and Start Mixing!</p>
         <div className="selection-content__amb-controls">
           <button className="selection-content__pause" onClick={playPauseHandler}>
-            <img src="/assets/images/play_pause.svg" />
+            {isAmbPlaying ? <PauseCircleFilledOutlinedIcon /> : <PlayCircleFilledOutlinedIcon />}
             {environment.envWord}
           </button>
           {isAmbPlaying && <VolumeSlider location={environment.name} volume={volume} volumeChangeHandler={volumeChangeHandler} />}
