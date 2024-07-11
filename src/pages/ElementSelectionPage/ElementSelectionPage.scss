@@ -26,7 +26,14 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    color: $header-background;
+
+    &--Rainy-Outdoors {
+      color: $header-background;
+    }
+
+    &--Beachside-Waves {
+      color: $secondary-dark;
+    }
 
     &__instruction {
       padding: 1rem 0 1rem 0;
@@ -98,6 +105,7 @@
       transition: transform 0.3s;
       display: flex;
       align-items: center;
+      text-shadow: 1px 1px 0 $primay-dark, -1px -1px 0 $primay-dark, -1px 1px 0 $primay-dark, 1px -1px 0 $primay-dark;
 
       img {
         width: 2.5rem;

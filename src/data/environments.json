@@ -16,7 +16,12 @@
     "displayName": "Beachside Waves",
     "envPhase": "at a Beachside",
     "envWord": "Sea",
-    "elements": ["Seagull", "Bonfire", "Boat", "Human-Activity"]
+    "elements": [
+      { "name": "Seagull", "file_num": 5 },
+      { "name": "Ship-Horn", "file_num": 3 },
+      { "name": "Motorboat", "file_num": 1 },
+      { "name": "Human-Activity", "file_num": 4 }
+    ]
   },
   {
     "name": "Among-Trees",

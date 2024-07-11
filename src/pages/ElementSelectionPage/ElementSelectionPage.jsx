@@ -181,7 +181,7 @@ const ElementSelectionPage = () => {
           <source src={`/assets/videos/${activeBackground}.mp4`} type="video/mp4" />
         </video>
       )}
-      <main className="selection-content">
+      <main className={`selection-content selection-content--${environment.name}`}>
         <h1 className={activeBackground ? `selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>
           Do you want to hear this {environment.envPhase}?
         </h1>
