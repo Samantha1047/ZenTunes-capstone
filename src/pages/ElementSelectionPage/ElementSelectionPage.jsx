@@ -206,9 +206,17 @@ const ElementSelectionPage = () => {
               {selectedElements[index].selected && (
                 <div className="selection-content__controls">
                   <p>Volume:</p>
-                  <ElementSlider location={ele} value={selectedElements[index].volume} valueChangeHandler={(e) => handleSliderChange(index, "volume", e.target.value)} />
+                  <ElementSlider
+                    location={environment.name}
+                    value={selectedElements[index].volume}
+                    valueChangeHandler={(e) => handleSliderChange(index, "volume", e.target.value)}
+                  />
                   <p>Frequency:</p>
-                  <ElementSlider location={ele} value={selectedElements[index].frequency} valueChangeHandler={(e) => handleSliderChange(index, "frequency", e.target.value)} />
+                  <ElementSlider
+                    location={environment.name}
+                    value={selectedElements[index].frequency}
+                    valueChangeHandler={(e) => handleSliderChange(index, "frequency", e.target.value)}
+                  />
                 </div>
               )}
             </div>

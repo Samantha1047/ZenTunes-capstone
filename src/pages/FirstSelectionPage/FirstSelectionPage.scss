@@ -1,4 +1,6 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
 .first-selection {
   display: flex;
   flex-direction: column;
@@ -53,18 +55,7 @@
       gap: 2.4rem;
 
       &--button {
-        padding: 10px 20px;
-        font-size: 1rem;
-        color: $off-white;
-        background-color: $button-blue;
-        border: none;
-        border-radius: 8px;
-        transition: background-color 0.3s, transform 0.3s;
-
-        &:hover {
-          background-color: $secondary-dark;
-          transform: scale(1.1);
-        }
+        @include selection-button-style;
       }
     }
   }
