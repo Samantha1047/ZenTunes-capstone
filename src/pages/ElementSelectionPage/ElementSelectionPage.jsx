@@ -31,6 +31,7 @@ const ElementSelectionPage = () => {
   const amb = useRef(null);
   const topLayerSounds = useRef([]);
   const topLayerInterval = useRef([]);
+  const hoverSound = useRef(null);
 
   //get all the src url for all the elements, in object with key as element name
   const topElements = {};
@@ -41,7 +42,6 @@ const ElementSelectionPage = () => {
   useEffect(() => {
     amb.current = new Howl({
       src: [baseAmb],
-      //autoplay: true,
       preload: true,
       loop: true,
       volume: volume,
@@ -55,6 +55,7 @@ const ElementSelectionPage = () => {
         }
       });
       if (amb.current) amb.current.stop();
+      if (hoverSound.current) hoverSound.current.stop();
     };
   }, []);
 
@@ -67,12 +68,19 @@ const ElementSelectionPage = () => {
     setIsAmbPlaying(!isAmbPlaying);
   };
 
-  const handleMouseEnter = (element) => {
+  const handleMouseEnter = (element, index) => {
     setActiveBackground(element);
+    if (!selectedElements[index].selected) {
+      playHoverSound(element);
+    }
   };
 
   const handleMouseLeave = () => {
     setActiveBackground("");
+    if (hoverSound.current) {
+      hoverSound.current.stop();
+      hoverSound.current = null;
+    }
   };
 
   const toggleElementSelection = (index) => {
@@ -168,6 +176,18 @@ const ElementSelectionPage = () => {
     amb.current.volume(e.target.value);
   };
 
+  const playHoverSound = (element) => {
+    const sounds = topElements[element];
+    if (sounds && sounds.length > 0) {
+      const randomIndex = Math.floor(Math.random() * sounds.length);
+      hoverSound.current = new Howl({
+        src: [sounds[randomIndex]],
+        volume: 0.5,
+      });
+      hoverSound.current.play();
+    }
+  };
+
   const handleResult = () => {
     navigate("/");
   };
@@ -187,10 +207,14 @@ const ElementSelectionPage = () => {
         <div
           className={activeBackground ? `selection-content__background-active selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>
           <h1>Do you want to hear this {environment.envPhase}?</h1>
-          <p className="selection-content__instruction">Click to Select and Start Mixing!</p>
+          <p className="selection-content__instruction">Click Button to Select and Start Mixing!</p>
           <div className="selection-content__amb-controls">
             <button className="selection-content__pause" onClick={playPauseHandler}>
-              {isAmbPlaying ? <PauseCircleFilledOutlinedIcon /> : <PlayCircleFilledOutlinedIcon />}
+              {isAmbPlaying ? (
+                <PauseCircleFilledOutlinedIcon style={{ cursor: "pointer", fontSize: "3rem" }} />
+              ) : (
+                <PlayCircleFilledOutlinedIcon style={{ cursor: "pointer", fontSize: "3rem" }} />
+              )}
               {environment.envWord}
             </button>
 
@@ -199,10 +223,12 @@ const ElementSelectionPage = () => {
         </div>
         <div className="selection-content__element-buttons">
           {elements.map((ele, index) => (
-            <div key={ele} className={ele} onMouseEnter={() => handleMouseEnter(ele)} onMouseLeave={handleMouseLeave}>
+            <div key={ele} className={`selection-content__button-container selection-content__button-container-${ele}`}>
               <button
-                className={`selection-content__element-buttons--button ${selectedElements[index].selected ? "selected" : ""}`}
-                onClick={() => toggleElementSelection(index, ele)}>
+                onMouseEnter={() => handleMouseEnter(ele, index)}
+                onMouseLeave={handleMouseLeave}
+                onClick={() => toggleElementSelection(index, ele)}
+                className={`selection-content__element-buttons--button ${selectedElements[index].selected ? "selected" : ""}`}>
                 {ele.replace("-", " ")}
               </button>
               {selectedElements[index].selected && (
