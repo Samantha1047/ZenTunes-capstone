@@ -81,32 +81,33 @@
         color: $off-white;
       }
     }
-  }
 
-  &__pause {
-    color: $off-white;
-    background-color: transparent;
-    padding: 0 1.25rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: transform 0.3s;
-    display: flex;
-    align-items: center;
-
-    img {
-      width: 2.5rem;
+    &__amb-controls {
+      display: flex;
+      align-items: center;
+      width: auto;
     }
 
-    &:hover {
-      transform: scale(1.1);
+    &__pause {
+      color: $off-white;
+      background-color: transparent;
+      padding: 0 1.25rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: transform 0.3s;
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 2.5rem;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
-
-  &__volume-slider {
-    padding: 0.5rem 0;
-  }
-
   &__try-again {
     position: absolute;
     bottom: 0;
