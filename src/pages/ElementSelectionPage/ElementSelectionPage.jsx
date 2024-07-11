@@ -73,9 +73,21 @@ const ElementSelectionPage = () => {
     setActiveBackground("");
   };
 
-  const toggleElementSelection = (index, element) => {
+  const toggleElementSelection = (index) => {
     const isSelected = selectedElements[index].selected;
-    setSelectedElements(selectedElements.map((item, idx) => (idx === index ? { ...item, selected: !item.selected } : item)));
+    const updatedElements = selectedElements.map((item, idx) => {
+      if (idx === index) {
+        return {
+          ...item,
+          selected: !item.selected,
+          // Reset volume and frequency to 50 when deselected
+          volume: !item.selected ? 50 : item.volume,
+          frequency: !item.selected ? 50 : item.frequency,
+        };
+      }
+      return item;
+    });
+    setSelectedElements(updatedElements);
 
     if (!isSelected) {
       scheduleTopLayerSounds(index);
