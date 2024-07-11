@@ -7,7 +7,6 @@ import VolumeSlider from "../../components/VolumeSlider/VolumeSlider";
 import ElementSlider from "../../components/ElementSlider/ElementSlider";
 import PlayCircleFilledOutlinedIcon from "@mui/icons-material/PlayCircleFilledOutlined";
 import PauseCircleFilledOutlinedIcon from "@mui/icons-material/PauseCircleFilledOutlined";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import "./ElementSelectionPage.scss";
 
 const ElementSelectionPage = () => {
@@ -208,11 +207,7 @@ const ElementSelectionPage = () => {
         <div
           className={activeBackground ? `selection-content__background-active selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>
           <h1>Do you want to hear this {environment.envPhase}?</h1>
-          <p className="selection-content__instruction">
-            Click&nbsp;
-            <AddCircleOutlineIcon />
-            &nbsp;to Select and Start Mixing!
-          </p>
+          <p className="selection-content__instruction">Click Button to Select and Start Mixing!</p>
           <div className="selection-content__amb-controls">
             <button className="selection-content__pause" onClick={playPauseHandler}>
               {isAmbPlaying ? (
@@ -232,10 +227,10 @@ const ElementSelectionPage = () => {
               <button
                 onMouseEnter={() => handleMouseEnter(ele, index)}
                 onMouseLeave={handleMouseLeave}
+                onClick={() => toggleElementSelection(index, ele)}
                 className={`selection-content__element-buttons--button ${selectedElements[index].selected ? "selected" : ""}`}>
                 {ele.replace("-", " ")}
               </button>
-              <AddCircleOutlineIcon onClick={() => toggleElementSelection(index, ele)} style={{ cursor: "pointer", fontSize: "2rem" }} />
               {selectedElements[index].selected && (
                 <div className="selection-content__controls">
                   <p>Volume:</p>
