@@ -6,7 +6,6 @@
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  color: $primay-dark;
   background-color: transparent;
   transition: background 0.5s ease;
 
@@ -20,12 +19,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: $primay-dark;
 
     h1 {
       margin-bottom: 1rem;
     }
 
     &__background-active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       &--Rainy-Outdoors {
         color: $header-background;
       }
@@ -38,6 +42,12 @@
       &--Cozy-Lounge {
         color: $greyish-orange;
       }
+    }
+
+    &__instruction {
+      padding: 0 0 2rem 0;
+      font-size: 1.1rem;
+      color: inherit;
     }
 
     &__environment-buttons {
