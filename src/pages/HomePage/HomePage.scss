@@ -42,18 +42,7 @@
 
   &__start-button {
     margin: 3rem;
-    background-color: $greyish-orange;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.25rem;
     font-weight: 600;
-    color: $primay-dark;
-    transition: transform 0.3s, border 0.3s;
-
-    &:hover {
-      transform: scale(1.1);
-      border: 1px solid $primay-dark;
-    }
+    @include navigation-button-style;
   }
 }

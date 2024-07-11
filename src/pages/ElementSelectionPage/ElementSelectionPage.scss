@@ -1,4 +1,6 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
 .element-selection {
   display: flex;
   flex-direction: column;
@@ -62,14 +64,8 @@
       margin-top: 1rem;
 
       &--button {
-        padding: 10px 20px;
-        width: 11rem;
-        font-size: 1rem;
-        color: $off-white;
-        background-color: $button-blue;
-        border: none;
-        border-radius: 8px;
-        transition: background-color 0.3s, transform 0.3s;
+        width: 12rem;
+        @include selection-button-style;
 
         &:hover {
           background-color: #1a5a78;
@@ -117,18 +113,7 @@
     position: absolute;
     bottom: 0;
     margin: 1rem;
-    background-color: $greyish-orange;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
+    @include navigation-button-style;
     font-size: 1rem;
-    color: $primay-dark;
-    transition: transform 0.3s;
-
-    &:hover {
-      transform: scale(1.1);
-      border: 1px solid $primay-dark;
-      cursor: pointer;
-    }
   }
 }
