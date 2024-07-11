@@ -184,16 +184,18 @@ const ElementSelectionPage = () => {
         </video>
       )}
       <main className={`selection-content selection-content--${environment.name}`}>
-        <h1 className={activeBackground ? `selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>
-          Do you want to hear this {environment.envPhase}?
-        </h1>
-        <p className="selection-content__instruction">Click to Select and Start Mixing!</p>
-        <div className="selection-content__amb-controls">
-          <button className="selection-content__pause" onClick={playPauseHandler}>
-            {isAmbPlaying ? <PauseCircleFilledOutlinedIcon /> : <PlayCircleFilledOutlinedIcon />}
-            {environment.envWord}
-          </button>
-          {isAmbPlaying && <VolumeSlider location={environment.name} volume={volume} volumeChangeHandler={volumeChangeHandler} />}
+        <div
+          className={activeBackground ? `selection-content__background-active selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>
+          <h1>Do you want to hear this {environment.envPhase}?</h1>
+          <p className="selection-content__instruction">Click to Select and Start Mixing!</p>
+          <div className="selection-content__amb-controls">
+            <button className="selection-content__pause" onClick={playPauseHandler}>
+              {isAmbPlaying ? <PauseCircleFilledOutlinedIcon /> : <PlayCircleFilledOutlinedIcon />}
+              {environment.envWord}
+            </button>
+
+            {isAmbPlaying && <VolumeSlider location={environment.name} volume={volume} volumeChangeHandler={volumeChangeHandler} />}
+          </div>
         </div>
         <div className="selection-content__element-buttons">
           {elements.map((ele, index) => (

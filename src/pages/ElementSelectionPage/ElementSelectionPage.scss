@@ -10,15 +10,7 @@
   transition: background 0.5s ease;
 
   &__background-video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    background-size: cover;
+    @include dynamic-background-style;
   }
 
   .selection-content {
@@ -26,8 +18,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
+    padding-top: 20vh;
 
     &--Rainy-Outdoors {
       color: $header-background;
@@ -37,23 +30,31 @@
       color: $secondary-dark;
     }
 
-    &__instruction {
-      padding: 1rem 0 1rem 0;
-    }
-
     &__background-active {
-      &--Thunder {
-        color: $header-background;
-      }
-      &--Windchime {
-        color: $header-background;
-      }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &--Thunder,
+      &--Windchime,
       &--Bamboo-Fountain {
         color: $header-background;
       }
+
       &--Traffic {
         color: $off-white;
       }
+      &--Seagull,
+      &--Ship-Horn,
+      &--Motorboat {
+        color: $off-white;
+      }
+    }
+
+    &__instruction {
+      padding: 1rem 0 1rem 0;
+      color: inherit;
     }
 
     &__element-buttons {

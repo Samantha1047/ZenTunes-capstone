@@ -4,6 +4,7 @@ import { Howl } from "howler";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import EnvironmentData from "../../data/environments.json";
+import AdsClickIcon from "@mui/icons-material/AdsClick";
 import "./FirstSelectionPage.scss";
 
 const FirstSelectionPage = () => {
@@ -55,7 +56,13 @@ const FirstSelectionPage = () => {
         </video>
       )}
       <main className="selection-content">
-        <h1 className={activeBackground ? `selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>Where Would You Like To Be?</h1>
+        <div
+          className={activeBackground ? ` selection-content__background-active selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>
+          <h1>Where Would You Like To Be?</h1>
+          <p className="selection-content__instruction">
+            <AdsClickIcon /> Hover to Preview
+          </p>
+        </div>
         <div className="selection-content__environment-buttons">
           {EnvironmentData.map((env) => (
             <button
