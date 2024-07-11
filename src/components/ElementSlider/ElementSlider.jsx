@@ -4,7 +4,7 @@ import "./ElementSlider.scss";
 const ElementSlider = ({ location, value, valueChangeHandler }) => {
   let setColor = "#247ba0";
   location === "Rainy-Outdoors" ? (setColor = "#cbd4c2") : "#247ba0";
-  location === "Beachside-Waves" ? (setColor = "#fffcff") : "#247ba0";
+  location === "Beachside-Waves" ? (setColor = "#1a5a78") : "#247ba0";
 
   return (
     <Slider

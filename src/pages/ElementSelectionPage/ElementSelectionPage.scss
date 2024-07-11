@@ -53,8 +53,11 @@
     }
 
     &__instruction {
-      padding: 1rem 0 1rem 0;
+      padding: 1rem 0 1.5rem 0;
+      font-size: 1.1rem;
       color: inherit;
+      display: flex;
+      align-items: center;
     }
 
     &__element-buttons {
@@ -79,8 +82,17 @@
       }
     }
 
+    &__button-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1rem;
+    }
+
     &__controls {
-      padding: 1rem 0;
+      padding-bottom: 1rem;
+      width: 100%;
       p {
         color: $off-white;
       }
