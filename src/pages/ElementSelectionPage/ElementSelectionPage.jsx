@@ -4,6 +4,7 @@ import { Howl, Howler } from "howler";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import VolumeSlider from "../../components/VolumeSlider/VolumeSlider";
+import ElementSlider from "../../components/ElementSlider/ElementSlider";
 import "./ElementSelectionPage.scss";
 
 const ElementSelectionPage = () => {
@@ -191,9 +192,9 @@ const ElementSelectionPage = () => {
               {selectedElements[index].selected && (
                 <div className="selection-content__controls">
                   <p>Volume:</p>
-                  <input type="range" min="0" max="100" value={selectedElements[index].volume} onChange={(e) => handleSliderChange(index, "volume", e.target.value)} />
+                  <ElementSlider location={ele} value={selectedElements[index].volume} valueChangeHandler={(e) => handleSliderChange(index, "volume", e.target.value)} />
                   <p>Frequency:</p>
-                  <input type="range" min="0" max="100" value={selectedElements[index].frequency} onChange={(e) => handleSliderChange(index, "frequency", e.target.value)} />
+                  <ElementSlider location={ele} value={selectedElements[index].frequency} valueChangeHandler={(e) => handleSliderChange(index, "frequency", e.target.value)} />
                 </div>
               )}
             </div>

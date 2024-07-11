@@ -105,6 +105,7 @@
 
       &:hover {
         transform: scale(1.1);
+        cursor: pointer;
       }
     }
   }
@@ -123,6 +124,7 @@
     &:hover {
       transform: scale(1.1);
       border: 1px solid $primay-dark;
+      cursor: pointer;
     }
   }
 }
