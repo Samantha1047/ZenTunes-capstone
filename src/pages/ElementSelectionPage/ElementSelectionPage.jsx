@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Howl, Howler } from "howler";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import VolumeSlider from "../../components/VolumeSlider/VolumeSlider";
+import ElementSlider from "../../components/ElementSlider/ElementSlider";
 import "./ElementSelectionPage.scss";
 
 const ElementSelectionPage = () => {
@@ -71,9 +73,21 @@ const ElementSelectionPage = () => {
     setActiveBackground("");
   };
 
-  const toggleElementSelection = (index, element) => {
+  const toggleElementSelection = (index) => {
     const isSelected = selectedElements[index].selected;
-    setSelectedElements(selectedElements.map((item, idx) => (idx === index ? { ...item, selected: !item.selected } : item)));
+    const updatedElements = selectedElements.map((item, idx) => {
+      if (idx === index) {
+        return {
+          ...item,
+          selected: !item.selected,
+          // Reset volume and frequency to 50 when deselected
+          volume: !item.selected ? 50 : item.volume,
+          frequency: !item.selected ? 50 : item.frequency,
+        };
+      }
+      return item;
+    });
+    setSelectedElements(updatedElements);
 
     if (!isSelected) {
       scheduleTopLayerSounds(index);
@@ -173,11 +187,11 @@ const ElementSelectionPage = () => {
         </h1>
         <p className="selection-content__instruction">Click to Select and Start Mixing!</p>
         <div className="selection-content__amb-controls">
-          <button className="element-selection__pause" onClick={playPauseHandler}>
+          <button className="selection-content__pause" onClick={playPauseHandler}>
             <img src="/assets/images/play_pause.svg" />
             {environment.envWord}
           </button>
-          {isAmbPlaying && <input type="range" min="0" max="1" step="0.01" value={volume} onChange={volumeChangeHandler} className="element-selection__volume-slider" />}
+          {isAmbPlaying && <VolumeSlider location={environment.name} volume={volume} volumeChangeHandler={volumeChangeHandler} />}
         </div>
         <div className="selection-content__element-buttons">
           {elements.map((ele, index) => (
@@ -190,9 +204,9 @@ const ElementSelectionPage = () => {
               {selectedElements[index].selected && (
                 <div className="selection-content__controls">
                   <p>Volume:</p>
-                  <input type="range" min="0" max="100" value={selectedElements[index].volume} onChange={(e) => handleSliderChange(index, "volume", e.target.value)} />
+                  <ElementSlider location={ele} value={selectedElements[index].volume} valueChangeHandler={(e) => handleSliderChange(index, "volume", e.target.value)} />
                   <p>Frequency:</p>
-                  <input type="range" min="0" max="100" value={selectedElements[index].frequency} onChange={(e) => handleSliderChange(index, "frequency", e.target.value)} />
+                  <ElementSlider location={ele} value={selectedElements[index].frequency} valueChangeHandler={(e) => handleSliderChange(index, "frequency", e.target.value)} />
                 </div>
               )}
             </div>
