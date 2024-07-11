@@ -18,9 +18,9 @@
     "envWord": "Sea",
     "elements": [
       { "name": "Seagull", "file_num": 5 },
-      { "name": "Ship-Horn", "file_num": 3 },
-      { "name": "Motorboat", "file_num": 1 },
-      { "name": "Human-Activity", "file_num": 4 }
+      { "name": "Ship-Horn", "file_num": 5 },
+      { "name": "Motorboat", "file_num": 4 },
+      { "name": "Human-Activity", "file_num": 3 }
     ]
   },
   {
