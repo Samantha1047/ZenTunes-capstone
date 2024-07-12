@@ -10,7 +10,7 @@
 
   &__background-video-env {
     @include dynamic-background-style;
-    opacity: 1;
+    opacity: 0.9;
   }
 
   &__background-video {
@@ -46,25 +46,26 @@
         color: $header-background;
       }
 
-      &--Traffic {
-        color: $off-white;
-      }
+      &--Traffic,
       &--Seagull,
       &--Ship-Horn,
-      &--Motorboat {
+      &--Motorboat,
+      &--Human-Activity {
         color: $off-white;
       }
     }
 
     &__instruction {
-      padding: 1rem 0 1rem 0;
+      padding: 1rem 0 0.5rem 0;
       font-size: 1.1rem;
       color: inherit;
       display: flex;
       align-items: center;
+      font-weight: 600;
 
       &--phase {
         padding-bottom: 1rem;
+        font-weight: 600;
       }
     }
 
@@ -124,6 +125,7 @@
       display: flex;
       align-items: center;
       gap: 0.3rem;
+      font-family: inherit;
 
       &:hover {
         transform: scale(1.1);
