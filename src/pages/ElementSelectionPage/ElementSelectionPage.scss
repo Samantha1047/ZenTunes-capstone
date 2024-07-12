@@ -20,7 +20,7 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
-    padding-top: 20vh;
+    padding-top: 15vh;
 
     &--Rainy-Outdoors {
       color: $header-background;
@@ -100,6 +100,7 @@
 
     &__amb-controls {
       display: flex;
+      flex-direction: column;
       align-items: center;
       width: auto;
     }
@@ -107,7 +108,7 @@
     &__pause {
       background-color: transparent;
       color: inherit;
-      padding: 0 1.25rem;
+      padding: 0 1.25rem 0.5rem 1.25rem;
       border: none;
       border-radius: 8px;
       font-size: 1.25rem;
@@ -121,7 +122,14 @@
         cursor: pointer;
       }
     }
+
+    &__volume {
+      &--hiddlen {
+        visibility: hidden;
+      }
+    }
   }
+
   &__try-again {
     position: absolute;
     bottom: 0;

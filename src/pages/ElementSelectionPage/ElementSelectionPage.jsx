@@ -217,8 +217,9 @@ const ElementSelectionPage = () => {
               )}
               {environment.envWord}
             </button>
-
-            {isAmbPlaying && <VolumeSlider location={environment.name} volume={volume} volumeChangeHandler={volumeChangeHandler} />}
+            <div className={isAmbPlaying ? "selection-content__volume" : " selection-content__volume selection-content__volume--hiddlen"}>
+              <VolumeSlider location={environment.name} volume={volume} volumeChangeHandler={volumeChangeHandler} />
+            </div>
           </div>
         </div>
         <div className="selection-content__element-buttons">

@@ -2,7 +2,7 @@
   {
     "name": "Rainy-Outdoors",
     "displayName": "Rainy Outdoors",
-    "envPhase": "at a Rainy Day",
+    "envPhase": "on a Rainy Day",
     "envWord": "Rain",
     "elements": [
       { "name": "Thunder", "file_num": 5 },
