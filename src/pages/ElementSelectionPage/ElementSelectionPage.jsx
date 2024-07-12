@@ -238,12 +238,14 @@ const ElementSelectionPage = () => {
                   <ElementSlider
                     location={environment.name}
                     value={selectedElements[index].volume}
+                    type={"volume"}
                     valueChangeHandler={(e) => handleSliderChange(index, "volume", e.target.value)}
                   />
                   <p>Frequency:</p>
                   <ElementSlider
                     location={environment.name}
                     value={selectedElements[index].frequency}
+                    type={"frequency"}
                     valueChangeHandler={(e) => handleSliderChange(index, "frequency", e.target.value)}
                   />
                 </div>
