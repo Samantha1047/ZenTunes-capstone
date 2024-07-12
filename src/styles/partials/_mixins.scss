@@ -24,12 +24,12 @@
   border: none;
   border-radius: 8px;
   font-size: 1.25rem;
-  color: $primay-dark;
+  color: $primary-dark;
   transition: transform 0.3s border 0.3s;
 
   &:hover {
     transform: scale(1.1);
-    border: 1px solid $primay-dark;
+    border: 1px solid $primary-dark;
     cursor: pointer;
   }
 }
