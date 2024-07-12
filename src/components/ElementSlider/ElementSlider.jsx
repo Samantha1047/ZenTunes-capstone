@@ -1,8 +1,8 @@
 import Slider from "@mui/material/Slider";
 import VolumeDown from "@mui/icons-material/VolumeDown";
 import VolumeUp from "@mui/icons-material/VolumeUp";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import "./ElementSlider.scss";
 
 const ElementSlider = ({ location, value, type, valueChangeHandler }) => {
@@ -12,7 +12,7 @@ const ElementSlider = ({ location, value, type, valueChangeHandler }) => {
 
   return (
     <div className={`element-slider element-slider--${location}`}>
-      {type === "volume" ? <VolumeDown /> : <RemoveCircleOutlineIcon />}
+      {type === "volume" ? <VolumeDown /> : <RemoveIcon />}
       <Slider
         min={0}
         max={100}
@@ -22,7 +22,7 @@ const ElementSlider = ({ location, value, type, valueChangeHandler }) => {
           color: setColor,
         }}
       />
-      {type === "volume" ? <VolumeUp /> : <AddCircleOutlineIcon />}
+      {type === "volume" ? <VolumeUp /> : <AddIcon />}
     </div>
   );
 };
