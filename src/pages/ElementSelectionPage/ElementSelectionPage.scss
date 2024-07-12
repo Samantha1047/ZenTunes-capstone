@@ -40,7 +40,8 @@
     }
 
     &--Cozy-Lounge {
-      color: rgb(25, 27, 25);
+      color: $greyish-orange;
+      text-shadow: -0.5px -0.5px 0 rgb(25, 27, 25), 0.5px -0.5px rgb(25, 27, 25), -0.5px 0.5px 0 rgb(25, 27, 25), 0.5px 0.5px 0 rgb(25, 27, 25);
     }
 
     &__background-active {

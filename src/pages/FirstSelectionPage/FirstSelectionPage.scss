@@ -43,7 +43,7 @@
       }
       &--Cozy-Lounge {
         color: $greyish-orange;
-        -webkit-text-stroke: 0.5px $primary-dark;
+        text-shadow: -0.5px -0.5px 0 rgb(25, 27, 25), 0.5px -0.5px rgb(25, 27, 25), -0.5px 0.5px 0 rgb(25, 27, 25), 0.5px 0.5px 0 rgb(25, 27, 25);
       }
     }
 
