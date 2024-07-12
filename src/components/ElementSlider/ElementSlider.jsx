@@ -9,6 +9,8 @@ const ElementSlider = ({ location, value, type, valueChangeHandler }) => {
   let setColor = "#247ba0";
   location === "Rainy-Outdoors" ? (setColor = "#cbd4c2") : "#247ba0";
   location === "Beachside-Waves" ? (setColor = "#1a5a78") : "#247ba0";
+  location === "Among-Trees" ? (setColor = "#fffcff") : "#247ba0";
+  location === "Cozy-Lounge" ? (setColor = "#fffcff") : "#247ba0";
 
   return (
     <div className={`element-slider element-slider--${location}`}>

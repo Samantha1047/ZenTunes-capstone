@@ -39,9 +39,11 @@
       }
       &--Among-Trees {
         color: $off-white;
+        -webkit-text-stroke: 0.5px $primary-dark;
       }
       &--Cozy-Lounge {
         color: $greyish-orange;
+        -webkit-text-stroke: 0.5px $primary-dark;
       }
     }
 

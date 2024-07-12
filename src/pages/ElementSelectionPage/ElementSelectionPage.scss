@@ -34,6 +34,15 @@
       color: $off-white;
     }
 
+    &--Among-Trees {
+      color: $off-white;
+      text-shadow: -1px -1px 0 $primary-dark, 1px -1px 0 $primary-dark, -1px 1px 0 $primary-dark, 1px 1px 0 $primary-dark;
+    }
+
+    &--Cozy-Lounge {
+      color: rgb(25, 27, 25);
+    }
+
     &__background-active {
       display: flex;
       flex-direction: column;
