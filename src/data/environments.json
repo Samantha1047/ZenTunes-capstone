@@ -2,7 +2,7 @@
   {
     "name": "Rainy-Outdoors",
     "displayName": "Rainy Outdoors",
-    "envPhase": "at a Rainy Day",
+    "envPhase": "on a Rainy Day",
     "envWord": "Rain",
     "elements": [
       { "name": "Thunder", "file_num": 5 },
@@ -28,13 +28,23 @@
     "displayName": "Among Trees",
     "envPhase": "among Trees",
     "envWord": "Forest",
-    "elements": ["Birds", "Bugs", "Deer", "Creeks"]
+    "elements": [
+      { "name": "Birds", "file_num": 5 },
+      { "name": "Bugs", "file_num": 5 },
+      { "name": "Foliage", "file_num": 4 },
+      { "name": "frogs", "file_num": 3 }
+    ]
   },
   {
     "name": "Cozy-Lounge",
     "displayName": "Cozy Lounge",
     "envPhase": "at a Cozy Lounge",
     "envWord": "Room",
-    "elements": ["Fireplace-Crackle", "Pages-Turning", "Cup-Clink", "Clock-Ticking"]
+    "elements": [
+      { "name": "Fireplace-Crackle", "file_num": 5 },
+      { "name": "Pages-Turning", "file_num": 5 },
+      { "name": "Cup-Clink", "file_num": 4 },
+      { "name": "Keyboard-Typing", "file_num": 3 }
+    ]
   }
 ]

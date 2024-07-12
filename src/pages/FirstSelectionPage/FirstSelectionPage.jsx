@@ -51,7 +51,7 @@ const FirstSelectionPage = () => {
     <div className="first-selection">
       <Header />
       {activeBackground && (
-        <video autoPlay loop muted playsInline className="first-selection__background-video">
+        <video autoPlay loop muted playsInline className={`first-selection__background-video ${activeBackground ? "first-selection__background-video--visible" : ""}`}>
           <source src={`/assets/videos/${activeBackground}.mp4`} type="video/mp4" />
         </video>
       )}

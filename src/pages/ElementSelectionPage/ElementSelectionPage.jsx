@@ -7,6 +7,7 @@ import VolumeSlider from "../../components/VolumeSlider/VolumeSlider";
 import ElementSlider from "../../components/ElementSlider/ElementSlider";
 import PlayCircleFilledOutlinedIcon from "@mui/icons-material/PlayCircleFilledOutlined";
 import PauseCircleFilledOutlinedIcon from "@mui/icons-material/PauseCircleFilledOutlined";
+import AdsClickIcon from "@mui/icons-material/AdsClick";
 import "./ElementSelectionPage.scss";
 
 const ElementSelectionPage = () => {
@@ -195,9 +196,11 @@ const ElementSelectionPage = () => {
   return (
     <div className={`element-selection element-selection--${environment.name}`}>
       <Header />
-      <video autoPlay loop muted playsInline className="element-selection__background-video">
+
+      <video autoPlay loop muted playsInline className="element-selection__background-video-env">
         <source src={`/assets/videos/${environment.name}.mp4`} type="video/mp4" />
       </video>
+
       {activeBackground && (
         <video autoPlay loop muted playsInline className="element-selection__background-video">
           <source src={`/assets/videos/${activeBackground}.mp4`} type="video/mp4" />
@@ -207,7 +210,10 @@ const ElementSelectionPage = () => {
         <div
           className={activeBackground ? `selection-content__background-active selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>
           <h1>Do you want to hear this {environment.envPhase}?</h1>
-          <p className="selection-content__instruction">Click Button to Select and Start Mixing!</p>
+          <p className="selection-content__instruction">
+            <AdsClickIcon /> Hover to Preview
+          </p>
+          <p className="selection-content__instruction--phase">Click Button to Select and Start Mixing!</p>
           <div className="selection-content__amb-controls">
             <button className="selection-content__pause" onClick={playPauseHandler}>
               {isAmbPlaying ? (
@@ -217,8 +223,9 @@ const ElementSelectionPage = () => {
               )}
               {environment.envWord}
             </button>
-
-            {isAmbPlaying && <VolumeSlider location={environment.name} volume={volume} volumeChangeHandler={volumeChangeHandler} />}
+            <div className={isAmbPlaying ? "selection-content__volume" : " selection-content__volume selection-content__volume--hiddlen"}>
+              <VolumeSlider location={environment.name} volume={volume} volumeChangeHandler={volumeChangeHandler} />
+            </div>
           </div>
         </div>
         <div className="selection-content__element-buttons">
@@ -237,12 +244,14 @@ const ElementSelectionPage = () => {
                   <ElementSlider
                     location={environment.name}
                     value={selectedElements[index].volume}
+                    type={"volume"}
                     valueChangeHandler={(e) => handleSliderChange(index, "volume", e.target.value)}
                   />
                   <p>Frequency:</p>
                   <ElementSlider
                     location={environment.name}
                     value={selectedElements[index].frequency}
+                    type={"frequency"}
                     valueChangeHandler={(e) => handleSliderChange(index, "frequency", e.target.value)}
                   />
                 </div>
