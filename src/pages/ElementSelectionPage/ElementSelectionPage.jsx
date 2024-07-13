@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Howl, Howler } from "howler";
+import { Howl } from "howler";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import VolumeSlider from "../../components/VolumeSlider/VolumeSlider";
@@ -8,6 +8,7 @@ import ElementSlider from "../../components/ElementSlider/ElementSlider";
 import PlayCircleFilledOutlinedIcon from "@mui/icons-material/PlayCircleFilledOutlined";
 import PauseCircleFilledOutlinedIcon from "@mui/icons-material/PauseCircleFilledOutlined";
 import AdsClickIcon from "@mui/icons-material/AdsClick";
+import HelpIcon from "@mui/icons-material/Help";
 import "./ElementSelectionPage.scss";
 
 const ElementSelectionPage = () => {
@@ -29,6 +30,7 @@ const ElementSelectionPage = () => {
   const [selectedElements, setSelectedElements] = useState(initialElements);
   const [isAmbPlaying, setIsAmbPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
+  const [hoveredElementIndex, setHoveredElementIndex] = useState(null);
   const amb = useRef(null);
   const topLayerSounds = useRef([]);
   const topLayerInterval = useRef([]);
@@ -76,12 +78,20 @@ const ElementSelectionPage = () => {
     }
   };
 
+  const handleMouseEnterIcon = (index) => {
+    setHoveredElementIndex(index);
+  };
+
   const handleMouseLeave = () => {
     setActiveBackground("");
     if (hoverSound.current) {
       hoverSound.current.stop();
       hoverSound.current = null;
     }
+  };
+
+  const handleMouseLeaveIcon = () => {
+    setHoveredElementIndex(null);
   };
 
   const toggleElementSelection = (index) => {
@@ -206,6 +216,7 @@ const ElementSelectionPage = () => {
           <source src={`/assets/videos/${activeBackground}.mp4`} type="video/mp4" />
         </video>
       )}
+
       <main className={`selection-content selection-content--${environment.name}`}>
         <div
           className={activeBackground ? `selection-content__background-active selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>
@@ -247,7 +258,14 @@ const ElementSelectionPage = () => {
                     type={"volume"}
                     valueChangeHandler={(e) => handleSliderChange(index, "volume", e.target.value)}
                   />
-                  <p>Frequency:</p>
+                  <div className="selection-content__occurrence-label">
+                    <div onMouseEnter={() => handleMouseEnterIcon(index)} onMouseLeave={handleMouseLeaveIcon}>
+                      <HelpIcon />
+                    </div>
+                    {hoveredElementIndex === index && <div className="selection-content__occurrence-label--message">How often would you like to hear this element?</div>}
+                    <p>Occurrence:</p>
+                  </div>
+
                   <ElementSlider
                     location={environment.name}
                     value={selectedElements[index].frequency}

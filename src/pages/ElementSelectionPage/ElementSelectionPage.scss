@@ -2,15 +2,11 @@
 @use "../../styles/partials/mixins" as *;
 
 .element-selection {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100%;
-  background-color: transparent;
+  @include page-layout-style;
 
   &__background-video-env {
     @include dynamic-background-style;
-    opacity: 0.9;
+    opacity: 1;
   }
 
   &__background-video {
@@ -122,6 +118,34 @@
       flex-direction: column;
       align-items: center;
       width: auto;
+    }
+
+    &__occurrence-label {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+
+      &--message {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 15rem;
+        background-color: rgba(203, 212, 194, 0.9);
+        color: $primary-dark;
+        text-align: center;
+        border-radius: 0.375rem;
+        padding: 0.5rem;
+        z-index: 1;
+        transition: opacity 0.3s, visibility 0.3s;
+        font-size: 0.8rem;
+
+        :hover {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
     }
 
     &__pause {
