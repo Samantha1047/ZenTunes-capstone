@@ -29,10 +29,10 @@
     "envPhase": "among Trees",
     "envWord": "Forest",
     "elements": [
-      { "name": "Birds", "file_num": 5 },
+      { "name": "Birds", "file_num": 6 },
       { "name": "Bugs", "file_num": 5 },
       { "name": "Foliage", "file_num": 4 },
-      { "name": "frogs", "file_num": 3 }
+      { "name": "Frogs", "file_num": 3 }
     ]
   },
   {
