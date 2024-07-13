@@ -206,6 +206,7 @@ const ElementSelectionPage = () => {
           <source src={`/assets/videos/${activeBackground}.mp4`} type="video/mp4" />
         </video>
       )}
+      {activeBackground && <div className={"first-selection__overlay"}></div>}
       <main className={`selection-content selection-content--${environment.name}`}>
         <div
           className={activeBackground ? `selection-content__background-active selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>
@@ -247,7 +248,7 @@ const ElementSelectionPage = () => {
                     type={"volume"}
                     valueChangeHandler={(e) => handleSliderChange(index, "volume", e.target.value)}
                   />
-                  <p>Frequency:</p>
+                  <p>Occurrence:</p>
                   <ElementSlider
                     location={environment.name}
                     value={selectedElements[index].frequency}

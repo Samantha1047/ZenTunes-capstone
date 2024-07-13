@@ -17,6 +17,10 @@
     @include dynamic-background-style;
   }
 
+  &__overlay {
+    @include background-overlay-style;
+  }
+
   .selection-content {
     flex-grow: 1;
     display: flex;

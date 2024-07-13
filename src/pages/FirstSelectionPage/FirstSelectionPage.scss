@@ -9,9 +9,25 @@
   background-color: transparent;
 
   &__background-video {
-    @include dynamic-background-style;
-    opacity: 0.9;
-    transition: opacity 2s ease-in-out;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 5s ease-in-out;
+
+    &--visible {
+      opacity: 1;
+    }
+  }
+
+  &__overlay {
+    @include background-overlay-style;
   }
 
   .selection-content {
