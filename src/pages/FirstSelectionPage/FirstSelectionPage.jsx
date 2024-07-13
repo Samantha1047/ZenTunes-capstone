@@ -56,6 +56,7 @@ const FirstSelectionPage = () => {
         </video>
       )}
       {activeBackground && <div className={"first-selection__overlay"}></div>}
+
       <main className="selection-content">
         <div
           className={activeBackground ? ` selection-content__background-active selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>

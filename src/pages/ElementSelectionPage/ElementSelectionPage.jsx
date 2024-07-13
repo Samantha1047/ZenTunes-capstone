@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Howl, Howler } from "howler";
+import { Howl } from "howler";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import VolumeSlider from "../../components/VolumeSlider/VolumeSlider";
@@ -216,6 +216,7 @@ const ElementSelectionPage = () => {
           <source src={`/assets/videos/${activeBackground}.mp4`} type="video/mp4" />
         </video>
       )}
+
       <main className={`selection-content selection-content--${environment.name}`}>
         <div
           className={activeBackground ? `selection-content__background-active selection-content__background-active--${activeBackground}` : "selection-content__background-active"}>
