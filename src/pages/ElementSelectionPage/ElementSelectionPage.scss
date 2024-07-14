@@ -1,6 +1,22 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
+@keyframes wave {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(203, 212, 194, 0.7), 0 0 0 10px rgba(203, 212, 194, 0), 0 0 0 20px rgba(203, 212, 194, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(203, 212, 194, 0.5), 0 0 0 15px rgba(203, 212, 194, 0.3), 0 0 0 25px rgba(203, 212, 194, 0.1);
+  }
+}
+
+.icon-wave {
+  position: relative;
+  animation: wave 2s infinite ease-in-out;
+  border-radius: 50%;
+}
+
 .element-selection {
   @include page-layout-style;
 
@@ -20,7 +36,7 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
-    padding-top: 15vh;
+    padding-top: 12vh;
 
     &--Rainy-Outdoors {
       color: $header-background;
@@ -70,7 +86,7 @@
       font-weight: 600;
 
       &--phase {
-        padding-bottom: 1rem;
+        padding-bottom: 1.5rem;
         font-weight: 600;
       }
     }
@@ -159,7 +175,7 @@
       transition: transform 0.3s;
       display: flex;
       align-items: center;
-      gap: 0.3rem;
+      gap: 1rem;
       font-family: inherit;
 
       &:hover {
