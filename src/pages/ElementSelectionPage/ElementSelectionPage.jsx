@@ -155,7 +155,7 @@ const ElementSelectionPage = () => {
   };
 
   const convertSliderValue = (value) => {
-    const maxInterval = 5 * 60 * 1000; // 5 minutes
+    const maxInterval = 3 * 60 * 1000; // 3 minutes
     const minInterval = 5 * 1000; // 5 sec
     const baseInterval = (maxInterval - minInterval) * (1 - value / 100) + minInterval;
     const randomRange = 10 * 1000; // 10 sec
