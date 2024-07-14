@@ -16,15 +16,17 @@ The primary users of this application are individuals seeking to enhance their w
 
 ### Features
 
-- Environment Selection: Users can choose from various ambient environments like rain, seaside, forest, and indoors.
-- Hover to preview: on the selection, when user hover on the selection button, the preview sound will paly and website turns to a dynamic background.
-- Sound Element Customization: Each environment comes with unique sound elements that users can add to their mix.
+- **Environment Selection:** Users can choose from various ambient environments like rainy outdoor, seaside, forest, and indoors.
+- **Hover to preview:** When users hover over the selection button, the preview sound will play, and the website will switch to a dynamic background.
+- **Sound Element Customization:** Each environment comes with unique sound elements that users can add to their mix, and each element has variations.
+- **Real Time Mixing:** Users have individual control over the base layer ambient sounds and element sounds, allowing real-time mixing to find the best sound they want.
+- **Loop Forever if Needed:** Users can leave the page open to continuously hear the sound. They don't need to worry about the soundtrack running out; it's always there for you!
 
 ## Implementation
 
 ### Tech Stack
 
-- Frontend: React JS
+- React JS
 - Audio Library: howler.js
 
 ### APIs
@@ -34,13 +36,11 @@ No external data APIs are used currently; all functionalities are implemented us
 ### Sitemap
 
 1.  Home Page
-    - With Title, message for headphone suggestion, and a button to start/navigate to First Selection Page.
+    - Includes a title, a message suggesting the use of headphones, and a button to start/navigate to the First Selection Page.
 2.  First Selection Page
     - Allows users to select their desired ambient environment.
-3.  Element Selection Page
-    - Users can interact with elements by playing/pausing their sounds and adjusting the volume and frequency via sliders. Selected elements can be combined to form a final mix.
-4.  Results Page:
-    - Displays the generated ambient soundscape with a progress bar and simple audio controls. A "Try Again" button for user to go back to Home Page.
+3.  Element Mixing Page
+    - Users can interact with element sounds and adjust the volume/occurrence via sliders. Users have total control for adding/removing sounds from the mix. A "Try Again" button allows users to go back to the Home Page.
 
 ### Mockups
 
@@ -57,44 +57,41 @@ No external data APIs are used currently; all functionalities are implemented us
 
 - the preview will has the same funcionality as in Firest Selection Page.
 - the volume and frequency(intensity) sliders will show up if users click on the each element.
-  ![](ElementSelectionPage.jpeg)
-
-#### Results Page
-
-![](ResultPage.jpeg)
+  ![](ElementMixingPage.jpeg)
 
 ### Data
 
+- Data structure is stored in environment.json file.
+
 Ambient Sound Categories:
 
-1. Outdoor-Raining:
+1. Rainy-Outdoors:
 
 - Thunder
 - Windchime
 - Bamboo fountain
 - Traffic
 
-2. Seaside:
+2. Beachside-Waves:
 
 - Seagull
-- Bonfire
-- Boat
+- Ship horn
+- Motorboat
 - Human activity
 
-3. Forest:
+3. Among-Trees(Forest):
 
 - Birds
 - Bugs
-- Deer and other animals
-- Creeks
+- Foliage
+- Frogs
 
-4. Indoor-Lounge:
+4. Cozy-Lounge:
 
-- Fireplace
+- Fireplace Crackling
 - Pages turning
 - Keyboard typing
-- Clock ticking (TBD)
-- Pets (cats or dogs) (TBD)
+- Cup clinking
 
 ### Endpoints
 
@@ -122,13 +119,9 @@ Currently, the project does not include any user authentication or profiles.
 
   - Develop interactive selection functionality with dynamic video backgrounds.
 
-- Element Selection Page Development
+- Element Mixing Page Development
 
-  - Create controls for sound element customization including volume and frequency adjustments.
-
-- Results Page Development
-
-  - Create Audio Player with controls for generated result audio.
+  - Create controls for sound element customization including volume and occurrence adjustments.
 
 - Testing and Bug Fixes
 
@@ -136,7 +129,6 @@ Currently, the project does not include any user authentication or profiles.
 
 ## Nice-to-haves
 
-- **Adjustable Settings**: Users can adjust the volume and frequency of each sound element via sliders.
 - **Session Timer**: A timer to alert users to take breaks after a predetermined period of playback.
 - **Music Upload and Integration**: Users can upload their music files or integrate with the SoundCloud API to enhance their ambient mix with music.
 - **User Profiles**: Allowing users to save and share their custom soundscapes.
