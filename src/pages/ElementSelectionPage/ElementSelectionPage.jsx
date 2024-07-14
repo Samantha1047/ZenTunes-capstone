@@ -28,7 +28,7 @@ const ElementSelectionPage = () => {
 
   const [activeBackground, setActiveBackground] = useState("");
   const [selectedElements, setSelectedElements] = useState(initialElements);
-  const [isAmbPlaying, setIsAmbPlaying] = useState(false);
+  const [isAmbPlaying, setIsAmbPlaying] = useState(true);
   const [volume, setVolume] = useState(0.5);
   const [hoveredElementIndex, setHoveredElementIndex] = useState(null);
   const amb = useRef(null);
@@ -46,6 +46,7 @@ const ElementSelectionPage = () => {
     amb.current = new Howl({
       src: [baseAmb],
       preload: true,
+      autoplay: true,
       loop: true,
       volume: volume,
     });
@@ -228,7 +229,7 @@ const ElementSelectionPage = () => {
           <div className="selection-content__amb-controls">
             <button className="selection-content__pause" onClick={playPauseHandler}>
               {isAmbPlaying ? (
-                <PauseCircleFilledOutlinedIcon style={{ cursor: "pointer", fontSize: "3rem" }} />
+                <PauseCircleFilledOutlinedIcon className="icon-wave" style={{ cursor: "pointer", fontSize: "3rem" }} />
               ) : (
                 <PlayCircleFilledOutlinedIcon style={{ cursor: "pointer", fontSize: "3rem" }} />
               )}
