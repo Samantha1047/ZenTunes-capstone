@@ -30,7 +30,7 @@
     "envWord": "Forest",
     "elements": [
       { "name": "Birds", "file_num": 6 },
-      { "name": "Bugs", "file_num": 5 },
+      { "name": "Bugs", "file_num": 4 },
       { "name": "Foliage", "file_num": 4 },
       { "name": "Frogs", "file_num": 3 }
     ]
