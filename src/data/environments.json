@@ -6,7 +6,7 @@
     "envWord": "Rain",
     "elements": [
       { "name": "Thunder", "file_num": 5 },
-      { "name": "Windchime", "file_num": 3 },
+      { "name": "Windchime", "file_num": 4 },
       { "name": "Bamboo-Fountain", "file_num": 1 },
       { "name": "Traffic", "file_num": 4 }
     ]
