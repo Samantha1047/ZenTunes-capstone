@@ -1,0 +1,71 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.first-selection {
+  @include page-layout-style;
+
+  &__background-video {
+    @include dynamic-background-style;
+    opacity: 0;
+    transition: opacity 5s ease-in-out;
+
+    &--visible {
+      opacity: 1;
+    }
+  }
+
+  &__overlay {
+    @include background-overlay-style;
+  }
+
+  .selection-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: $primary-dark;
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    &__background-active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      &--Rainy-Outdoors {
+        color: $header-background;
+      }
+      &--Beachside-Waves {
+        color: $off-white;
+      }
+      &--Among-Trees {
+        color: $off-white;
+        -webkit-text-stroke: 0.5px $primary-dark;
+      }
+      &--Cozy-Lounge {
+        color: $greyish-orange;
+        text-shadow: -0.5px -0.5px 0 rgb(25, 27, 25), 0.5px -0.5px rgb(25, 27, 25), -0.5px 0.5px 0 rgb(25, 27, 25), 0.5px 0.5px 0 rgb(25, 27, 25);
+      }
+    }
+
+    &__instruction {
+      padding: 0 0 2rem 0;
+      font-size: 1.1rem;
+      color: inherit;
+    }
+
+    &__environment-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.4rem;
+
+      &--button {
+        @include selection-button-style;
+      }
+    }
+  }
+}

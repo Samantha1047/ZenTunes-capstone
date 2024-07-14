@@ -1,0 +1,67 @@
+@use "./variables" as *;
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
+@mixin selection-button-style {
+  font-family: "Libre Baskerville", serif;
+  padding: 0.625rem 1.25rem;
+  font-size: 1rem;
+  color: $off-white;
+  background-color: $button-blue;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.3s;
+
+  &:hover {
+    background-color: $secondary-dark;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+@mixin navigation-button-style {
+  background-color: $greyish-orange;
+  padding: 0.625rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  color: $primary-dark;
+  transition: transform 0.3s border 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+    border: 1px solid $primary-dark;
+    cursor: pointer;
+  }
+}
+
+@mixin page-layout-style {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background-color: transparent;
+}
+
+@mixin dynamic-background-style {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background-size: cover;
+  opacity: 0.88;
+}
+
+@mixin background-overlay-style {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $grey;
+  opacity: 0.1;
+  z-index: -50;
+}

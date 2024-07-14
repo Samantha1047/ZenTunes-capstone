@@ -1,0 +1,201 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+@keyframes wave {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(203, 212, 194, 0.7), 0 0 0 10px rgba(203, 212, 194, 0), 0 0 0 20px rgba(203, 212, 194, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(203, 212, 194, 0.5), 0 0 0 15px rgba(203, 212, 194, 0.3), 0 0 0 25px rgba(203, 212, 194, 0.1);
+  }
+}
+
+.element-selection {
+  @include page-layout-style;
+
+  &__background-video-env {
+    @include dynamic-background-style;
+    opacity: 1;
+  }
+
+  &__background-video {
+    @include dynamic-background-style;
+  }
+
+  .selection-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding-top: 12vh;
+
+    &--Rainy-Outdoors {
+      color: $header-background;
+    }
+
+    &--Beachside-Waves {
+      color: $off-white;
+    }
+
+    &--Among-Trees {
+      color: $off-white;
+      text-shadow: -1px -1px 0 $primary-dark, 1px -1px 0 $primary-dark, -1px 1px 0 $primary-dark, 1px 1px 0 $primary-dark;
+    }
+
+    &--Cozy-Lounge {
+      color: $greyish-orange;
+      text-shadow: -0.5px -0.5px 0 rgb(25, 27, 25), 0.5px -0.5px rgb(25, 27, 25), -0.5px 0.5px 0 rgb(25, 27, 25), 0.5px 0.5px 0 rgb(25, 27, 25);
+    }
+
+    &__background-active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &--Thunder,
+      &--Windchime,
+      &--Bamboo-Fountain {
+        color: $header-background;
+      }
+
+      &--Traffic,
+      &--Seagull,
+      &--Ship-Horn,
+      &--Motorboat,
+      &--Human-Activity {
+        color: $off-white;
+      }
+    }
+
+    &__instruction {
+      padding: 1rem 0 0.5rem 0;
+      font-size: 1.1rem;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+
+      &--phase {
+        padding-bottom: 1.5rem;
+        font-weight: 600;
+      }
+    }
+
+    &__icon-wave {
+      position: relative;
+      animation: wave 2s infinite ease-in-out;
+      border-radius: 50%;
+    }
+
+    &__element-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4rem;
+      margin-top: 1.5rem;
+
+      &--button {
+        width: 12.5rem;
+        @include selection-button-style;
+
+        &:hover {
+          background-color: #1a5a78;
+          transform: scale(1.1);
+        }
+
+        &.selected {
+          background-color: $greyish-orange;
+        }
+      }
+    }
+
+    &__button-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    &__controls {
+      padding-bottom: 1rem;
+      width: 100%;
+      p {
+        color: $off-white;
+      }
+    }
+
+    &__amb-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: auto;
+    }
+
+    &__occurrence-label {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+
+      &--message {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 15rem;
+        background-color: rgba(203, 212, 194, 0.9);
+        color: $primary-dark;
+        text-align: center;
+        border-radius: 0.375rem;
+        padding: 0.5rem;
+        z-index: 1;
+        transition: opacity 0.3s, visibility 0.3s;
+        font-size: 0.8rem;
+        text-shadow: none;
+
+        :hover {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+
+    &__pause {
+      background-color: transparent;
+      color: inherit;
+      padding: 0 1.25rem 0.5rem 1.25rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.25rem;
+      transition: transform 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: inherit;
+
+      &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+    }
+
+    &__volume {
+      &--hiddlen {
+        visibility: hidden;
+      }
+    }
+  }
+
+  &__try-again {
+    position: absolute;
+    bottom: 0;
+    margin: 1rem;
+    @include navigation-button-style;
+    font-size: 1rem;
+  }
+}

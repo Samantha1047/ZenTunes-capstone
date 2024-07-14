@@ -1,0 +1,49 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.home {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  color: $primary-dark;
+  background-color: $off-white;
+
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+
+    h1 {
+      margin: 0.5rem;
+      color: $primary-dark;
+    }
+
+    p {
+      margin: 0.5rem;
+      font-size: 1rem;
+    }
+  }
+
+  &__message {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    visibility: hidden;
+    font-size: 1.2rem;
+
+    &--show {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__start-button {
+    margin: 3rem;
+    font-weight: 600;
+    @include navigation-button-style;
+  }
+}

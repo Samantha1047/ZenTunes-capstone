@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Rainy-Outdoors",
+    "displayName": "Rainy Outdoors",
+    "envPhase": "on a Rainy Day",
+    "envWord": "Rain",
+    "elements": [
+      { "name": "Thunder", "file_num": 5 },
+      { "name": "Windchime", "file_num": 4 },
+      { "name": "Bamboo-Fountain", "file_num": 1 },
+      { "name": "Traffic", "file_num": 4 }
+    ]
+  },
+  {
+    "name": "Beachside-Waves",
+    "displayName": "Beachside Waves",
+    "envPhase": "at a Beachside",
+    "envWord": "Sea",
+    "elements": [
+      { "name": "Seagull", "file_num": 5 },
+      { "name": "Ship-Horn", "file_num": 5 },
+      { "name": "Motorboat", "file_num": 4 },
+      { "name": "Human-Activity", "file_num": 3 }
+    ]
+  },
+  {
+    "name": "Among-Trees",
+    "displayName": "Among Trees",
+    "envPhase": "among Trees",
+    "envWord": "Forest",
+    "elements": [
+      { "name": "Birds", "file_num": 6 },
+      { "name": "Bugs", "file_num": 4 },
+      { "name": "Foliage", "file_num": 4 },
+      { "name": "Frogs", "file_num": 3 }
+    ]
+  },
+  {
+    "name": "Cozy-Lounge",
+    "displayName": "Cozy Lounge",
+    "envPhase": "at a Cozy Lounge",
+    "envWord": "Room",
+    "elements": [
+      { "name": "Fireplace-Crackling", "file_num": 5 },
+      { "name": "Page-Turning", "file_num": 6 },
+      { "name": "Cup-Clinking", "file_num": 6 },
+      { "name": "Keyboard-Typing", "file_num": 5 }
+    ]
+  }
+]
