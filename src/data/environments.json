@@ -42,9 +42,9 @@
     "envWord": "Room",
     "elements": [
       { "name": "Fireplace-Crackling", "file_num": 5 },
-      { "name": "Page-Turning", "file_num": 5 },
-      { "name": "Cup-Clinking", "file_num": 4 },
-      { "name": "Keyboard-Typing", "file_num": 3 }
+      { "name": "Page-Turning", "file_num": 6 },
+      { "name": "Cup-Clinking", "file_num": 6 },
+      { "name": "Keyboard-Typing", "file_num": 5 }
     ]
   }
 ]
