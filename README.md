@@ -32,26 +32,26 @@ Follow these steps to run a local instance of ZenTunes:
 
 1. Clone or download this repo.
 2. Install NPM packages:
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 3. Start the React app:
-    ```sh
-    npm run dev
-    ```
+   ```sh
+   npm run dev
+   ```
 4. Click on the generated local URL in the terminal:
-    ```sh
-    ➜  Local:   http://localhost:51xx/
-    ```
+   ```sh
+   ➜  Local:   http://localhost:51xx/
+   ```
 
 <!-- CONTACT -->
 
 ## Contact
 
+![sysald-logo](public/assets/images/sysald-logo.png)
 Samantha Sun - Sysald Sound  
 sysaldsound@gmail.com  
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
 
 <!-- ACKNOWLEDGMENTS -->
 
@@ -59,8 +59,8 @@ sysaldsound@gmail.com
 
 - All the videos are from [pexels.com]
 
-
 <!-- MARKDOWN LINKS & IMAGES -->
+
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/sysaldsound
 [React.js]: https://reactjs.org/
