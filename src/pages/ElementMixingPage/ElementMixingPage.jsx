@@ -9,9 +9,9 @@ import PlayCircleFilledOutlinedIcon from "@mui/icons-material/PlayCircleFilledOu
 import PauseCircleFilledOutlinedIcon from "@mui/icons-material/PauseCircleFilledOutlined";
 import AdsClickIcon from "@mui/icons-material/AdsClick";
 import HelpIcon from "@mui/icons-material/Help";
-import "./ElementSelectionPage.scss";
+import "./ElementMixingPage.scss";
 
-const ElementSelectionPage = () => {
+const ElementMixingPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -229,7 +229,7 @@ const ElementSelectionPage = () => {
           <div className="selection-content__amb-controls">
             <button className="selection-content__pause" onClick={playPauseHandler}>
               {isAmbPlaying ? (
-                <PauseCircleFilledOutlinedIcon className="icon-wave" style={{ cursor: "pointer", fontSize: "3rem" }} />
+                <PauseCircleFilledOutlinedIcon className="selection-content__icon-wave" style={{ cursor: "pointer", fontSize: "3rem" }} />
               ) : (
                 <PlayCircleFilledOutlinedIcon style={{ cursor: "pointer", fontSize: "3rem" }} />
               )}
@@ -287,4 +287,4 @@ const ElementSelectionPage = () => {
   );
 };
 
-export default ElementSelectionPage;
+export default ElementMixingPage;

@@ -11,12 +11,6 @@
   }
 }
 
-.icon-wave {
-  position: relative;
-  animation: wave 2s infinite ease-in-out;
-  border-radius: 50%;
-}
-
 .element-selection {
   @include page-layout-style;
 
@@ -89,6 +83,12 @@
         padding-bottom: 1.5rem;
         font-weight: 600;
       }
+    }
+
+    &__icon-wave {
+      position: relative;
+      animation: wave 2s infinite ease-in-out;
+      border-radius: 50%;
     }
 
     &__element-buttons {

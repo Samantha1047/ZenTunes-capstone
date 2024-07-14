@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Header.scss";
-import logoUrl from "/assets/images/logo-no-background.png";
+import logoUrl from "/assets/images/logo-no-background.svg";
 
 const Header = () => {
   return (
