@@ -6,7 +6,7 @@
     "envWord": "Rain",
     "elements": [
       { "name": "Thunder", "file_num": 5 },
-      { "name": "Windchime", "file_num": 3 },
+      { "name": "Windchime", "file_num": 4 },
       { "name": "Bamboo-Fountain", "file_num": 1 },
       { "name": "Traffic", "file_num": 4 }
     ]
@@ -29,10 +29,10 @@
     "envPhase": "among Trees",
     "envWord": "Forest",
     "elements": [
-      { "name": "Birds", "file_num": 5 },
+      { "name": "Birds", "file_num": 6 },
       { "name": "Bugs", "file_num": 5 },
       { "name": "Foliage", "file_num": 4 },
-      { "name": "frogs", "file_num": 3 }
+      { "name": "Frogs", "file_num": 3 }
     ]
   },
   {
@@ -41,10 +41,10 @@
     "envPhase": "at a Cozy Lounge",
     "envWord": "Room",
     "elements": [
-      { "name": "Fireplace-Crackle", "file_num": 5 },
-      { "name": "Pages-Turning", "file_num": 5 },
-      { "name": "Cup-Clink", "file_num": 4 },
-      { "name": "Keyboard-Typing", "file_num": 3 }
+      { "name": "Fireplace-Crackling", "file_num": 5 },
+      { "name": "Page-Turning", "file_num": 6 },
+      { "name": "Cup-Clinking", "file_num": 6 },
+      { "name": "Keyboard-Typing", "file_num": 5 }
     ]
   }
 ]
