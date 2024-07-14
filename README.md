@@ -4,12 +4,12 @@
 
 ## About The Project
 
+**ZenTunes** is an interactive React JS application designed to allow users to create their own personalized ambient soundscapes. By selecting an environment and adding sound elements, users can do real-time mixing to tailor the ambiance to enhance relaxation or concentration.
+
 ![screenshot of rainy page](public/assets/images/Rainy-Page.png)
 _A screenshot of the Rainy outdoor environment mixing page._
 
-**ZenTunes** is an interactive React JS application designed to allow users to create their own personalized ambient soundscapes. By selecting an environment and adding sound elements, users can do real-time mixing to tailor the ambiance to enhance relaxation or concentration.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Features
 
@@ -48,7 +48,6 @@ Follow these steps to run a local instance of ZenTunes:
 
 ## Contact
 
-![sysald-logo](public/assets/images/sysald-logo.png)
 Samantha Sun - Sysald Sound  
 sysaldsound@gmail.com  
 [![LinkedIn][linkedin-shield]][linkedin-url]
